@@ -26,8 +26,8 @@ class QRCodeContainer extends HTMLElement {
       text: value,
       width: 512,
       height: 512,
-      colorDark : '#FFFFFF',
-      colorLight : '#000000',
+      colorDark : '#000000',
+      colorLight : '#FFFFFF',
       correctLevel : QRCode.CorrectLevel.H
     })
 
