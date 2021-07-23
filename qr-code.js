@@ -41,9 +41,6 @@ class QRCodeContainer extends HTMLElement {
   }
 
   attributeChangedCallback(name, oldValue, newValue) {
-
-    // @bug on second error or so, QR code does not come
-
     if(this.error){
       this.error.remove()
     }
