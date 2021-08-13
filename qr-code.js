@@ -22,6 +22,13 @@ class QRCodeContainer extends HTMLElement {
     }
 
     const new_qr_code = this.qr_code_container = document.createElement('div')
+    this.style.backgroundColor = 'white'
+    this.style.contentFit = 'to-size'
+    this.style.padding = '1em'
+    this.style.display = 'inline-block'
+    this.style.width = 'fit-content'
+    this.style.height = 'fit-content'
+
     this.qr_code = new QRCode(this, {
       text: value,
       width: 512,
@@ -35,6 +42,7 @@ class QRCodeContainer extends HTMLElement {
 
     this.qr_link = document.createElement('a')
     this.qr_link.setAttribute('href', value)
+    this.qr_link.setAttribute('target', '_blank')
     this.qr_link.innerText = 'link'
 
     this.appendChild(this.qr_link)
