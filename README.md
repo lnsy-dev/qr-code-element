@@ -12,3 +12,4 @@ Some Caveats: You cannot store a string longer than 1024 characters
 ## Prior work:
 
 https://github.com/kazuhikoarase/qrcode-generator
+https://github.com/davidshimjs/qrcodejs
