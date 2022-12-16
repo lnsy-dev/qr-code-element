@@ -6,85 +6,6 @@
 
 */
 
-class QRCodeContainer extends HTMLElement {
-  connectedCallback(){
-
-    const qrtext = this.getAttribute('value')
-    let value = window.location.origin
-    if(qrtext !== null){
-      value = ''
-      value = qrtext
-    }
-
-    if(value.length > 1024){
-      this.innerHTML('Value is too long to display')
-      return
-    }
-
-    const new_qr_code = this.qr_code_container = document.createElement('div')
-    this.style.backgroundColor = 'white'
-    this.style.contentFit = 'to-size'
-    this.style.padding = '1em'
-    this.style.display = 'inline-block'
-    this.style.width = 'fit-content'
-    this.style.height = 'fit-content'
-
-    this.qr_code = new QRCode(this, {
-      text: value,
-      width: 512,
-      height: 512,
-      colorDark : '#000000',
-      colorLight : '#FFFFFF',
-      correctLevel : QRCode.CorrectLevel.H
-    })
-
-    this.appendChild(new_qr_code)
-
-    this.qr_link = document.createElement('a')
-    this.qr_link.setAttribute('href', value)
-    this.qr_link.setAttribute('target', '_blank')
-    this.qr_link.innerText = 'link'
-
-    this.appendChild(this.qr_link)
-  }
-
-  attributeChangedCallback(name, oldValue, newValue) {
-    if(this.error){
-      this.error.remove()
-    }
-
-    if(newValue.length > 2048){
-      this.error = document.createElement('error')
-      if(this.qr_code_container) this.qr_code_container.style.display = "none"
-
-      this.error.innerHTML = 'Value is too long to display as a QR Code.'
-      this.appendChild(this.error)
-      return
-    }
-
-
-    if(this.qr_code_container) this.qr_code_container.style.display = 'block'
-    if(this.qr_code) this.qr_code.makeCode(newValue)
-    if(this.qr_link) this.qr_link.setAttribute('href', newValue)
-  }
-
-  disconnectedCallback() {
-    console.log('Custom square element removed from page.');
-  }
-
-  adoptedCallback() {
-    console.log('Custom square element moved to new page.');
-  }
-
-  static get observedAttributes() { 
-    return ['value']
-  }
-
-}
-
-customElements.define('qr-code', QRCodeContainer)
-
-
 
 
 /**
@@ -701,3 +622,85 @@ var QRCode;
    */
   QRCode.CorrectLevel = QRErrorCorrectLevel;
 })();
+
+
+class QRCodeContainer extends HTMLElement {
+  connectedCallback(){
+
+    const qrtext = this.getAttribute('value')
+    let value = window.location.origin
+    if(qrtext !== null){
+      value = ''
+      value = qrtext
+    }
+
+    if(value.length > 1024){
+      this.innerHTML('Value is too long to display')
+      return
+    }
+
+    const new_qr_code = this.qr_code_container = document.createElement('div')
+    this.style.backgroundColor = 'white'
+    this.style.contentFit = 'to-size'
+    this.style.padding = '1em'
+    this.style.display = 'inline-block'
+    this.style.width = 'fit-content'
+    this.style.height = 'fit-content'
+
+    this.qr_code = new QRCode(this, {
+      text: value,
+      width: 512,
+      height: 512,
+      colorDark : '#000000',
+      colorLight : '#FFFFFF',
+      correctLevel : QRCode.CorrectLevel.H
+    })
+
+    this.appendChild(new_qr_code)
+
+    this.qr_link = document.createElement('a')
+    this.qr_link.setAttribute('href', value)
+    this.qr_link.setAttribute('target', '_blank')
+    this.qr_link.innerText = 'link'
+
+    this.appendChild(this.qr_link)
+  }
+
+  attributeChangedCallback(name, oldValue, newValue) {
+    if(this.error){
+      this.error.remove()
+    }
+
+    if(newValue.length > 2048){
+      this.error = document.createElement('error')
+      if(this.qr_code_container) this.qr_code_container.style.display = "none"
+
+      this.error.innerHTML = 'Value is too long to display as a QR Code.'
+      this.appendChild(this.error)
+      return
+    }
+
+
+    if(this.qr_code_container) this.qr_code_container.style.display = 'block'
+    if(this.qr_code) this.qr_code.makeCode(newValue)
+    if(this.qr_link) this.qr_link.setAttribute('href', newValue)
+  }
+
+  disconnectedCallback() {
+    console.log('Custom square element removed from page.');
+  }
+
+  adoptedCallback() {
+    console.log('Custom square element moved to new page.');
+  }
+
+  static get observedAttributes() { 
+    return ['value']
+  }
+
+}
+
+customElements.define('qr-code', QRCodeContainer)
+
+
+
