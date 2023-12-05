@@ -15,12 +15,15 @@
 
   <title>QR Code Element</title>
   <link rel="stylesheet" type="text/css" href="./styles/index.css">
+  <script type="module" src="https://lnsy-dev.github.io/markdown-component/dist/mark-down-component.min.js"></script>
+
   <script src="./src/index.js" type="module"></script>
   <style>
 
     body {
-      text-align: center;
-      font-family: monospace;
+      max-width: 40em;
+      margin:auto;
+      font-family: sans-serif;
     }
     qr-code {
       width: 20em;
@@ -37,9 +40,7 @@
   </style>
 </head>
 <body>
-  <h1> QR Code Element</h1>
-  <qr-code value="qr code element"></qr-code>
-  <qr-code id="styled-qr-code" value="styled qr code element"></qr-code>
+  <mark-down src="./README.md"></mark-down>
 
 </body>
 </html>
