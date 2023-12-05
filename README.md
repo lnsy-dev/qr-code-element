@@ -4,7 +4,7 @@ Simple Pure HTML QR Code
 Include [the minified js](https://lnsy-dev.github.io/qr-code-element/dist/qr-code-element.min.js) in your code and use with the markup:
 
 ```HTML
-  <script src="qr-code.min.js"></script>
+  <script src="https://lnsy-dev.github.io/qr-code-element/dist/qr-code-element.min.js"></script>
   <qr-code value="cool url link here"></qr-code>
 ```
 
@@ -40,3 +40,9 @@ the result:
 
 - https://github.com/kazuhikoarase/qrcode-generator
 - https://github.com/davidshimjs/qrcodejs
+
+## Hire Me
+
+I am available for remote projects!
+
+https://lnsy.dev
