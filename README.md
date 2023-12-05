@@ -41,6 +41,9 @@ the result:
 - https://github.com/kazuhikoarase/qrcode-generator
 - https://github.com/davidshimjs/qrcodejs
 
+## Github
+https://github.com/lnsy-dev/qr-code-element
+
 ## Hire Me
 
 I am available for remote projects!
