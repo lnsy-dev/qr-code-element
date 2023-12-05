@@ -17,10 +17,20 @@
   <link rel="stylesheet" type="text/css" href="./styles/index.css">
   <script src="./src/index.js" type="module"></script>
   <style>
+
+    body {
+      text-align: center;
+      font-family: monospace;
+    }
     qr-code {
       width: 20em;
       height: auto;
       margin: auto;
+    }
+
+    #styled-qr-code {
+      background-color: yellow;
+      color: blue;
     }
 
 
@@ -29,5 +39,7 @@
 <body>
   <h1> QR Code Element</h1>
   <qr-code value="qr code element"></qr-code>
+  <qr-code id="styled-qr-code" value="styled qr code element"></qr-code>
+
 </body>
 </html>
