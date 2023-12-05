@@ -639,24 +639,15 @@ class QRCodeContainer extends HTMLElement {
       return
     }
 
-    const new_qr_code = this.qr_code_container = document.createElement('div')
-    this.style.backgroundColor = 'white'
-    this.style.contentFit = 'to-size'
-    this.style.padding = '1em'
-    this.style.display = 'inline-block'
-    this.style.width = 'fit-content'
-    this.style.height = 'fit-content'
-
+    const styles = getComputedStyle(this)
     this.qr_code = new QRCode(this, {
       text: value,
-      width: 512,
-      height: 512,
-      colorDark : '#000000',
-      colorLight : '#FFFFFF',
+      width: 1024,
+      height: 1024,
+      colorDark : styles["background-color"],
+      colorLight : styles["color"],
       correctLevel : QRCode.CorrectLevel.H
     })
-
-    this.appendChild(new_qr_code)
 
     this.qr_link = document.createElement('a')
     this.qr_link.setAttribute('href', value)
@@ -664,38 +655,6 @@ class QRCodeContainer extends HTMLElement {
     this.qr_link.innerText = 'link'
 
     this.appendChild(this.qr_link)
-  }
-
-  attributeChangedCallback(name, oldValue, newValue) {
-    if(this.error){
-      this.error.remove()
-    }
-
-    if(newValue.length > 2048){
-      this.error = document.createElement('error')
-      if(this.qr_code_container) this.qr_code_container.style.display = "none"
-
-      this.error.innerHTML = 'Value is too long to display as a QR Code.'
-      this.appendChild(this.error)
-      return
-    }
-
-
-    if(this.qr_code_container) this.qr_code_container.style.display = 'block'
-    if(this.qr_code) this.qr_code.makeCode(newValue)
-    if(this.qr_link) this.qr_link.setAttribute('href', newValue)
-  }
-
-  disconnectedCallback() {
-    console.log('Custom square element removed from page.');
-  }
-
-  adoptedCallback() {
-    console.log('Custom square element moved to new page.');
-  }
-
-  static get observedAttributes() { 
-    return ['value']
   }
 
 }
