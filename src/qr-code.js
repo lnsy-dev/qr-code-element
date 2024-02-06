@@ -639,13 +639,12 @@ class QRCodeContainer extends HTMLElement {
       return
     }
 
-    const styles = getComputedStyle(this)
     this.qr_code = new QRCode(this, {
       text: value,
       width: 1024,
       height: 1024,
-      colorDark : styles["background-color"],
-      colorLight : styles["color"],
+      colorDark : 'black',
+      colorLight : 'white',
       correctLevel : QRCode.CorrectLevel.H
     })
 

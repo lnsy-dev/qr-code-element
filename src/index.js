@@ -1,1 +1,0 @@
-import './qr-code.js'
