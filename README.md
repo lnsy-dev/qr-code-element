@@ -3,10 +3,10 @@
 # qr-code-element
 Simple Pure HTML QR Code
 
-Include [the minified js](https://lnsy-dev.github.io/qr-code-element/dist/qr-code-element.min.js) in your code and use with the markup:
+Include [the js](https://lnsy-dev.github.io/qr-code-element/src/qr-code.js) in your code and use with the markup:
 
 ```HTML
-  <script src="https://lnsy-dev.github.io/qr-code-element/dist/qr-code-element.min.js"></script>
+  <script src="https://lnsy-dev.github.io/qr-code-element/src/qr-code.js"></script>
   <qr-code value="cool url link here"></qr-code>
 ```
 
