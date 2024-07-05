@@ -11,6 +11,7 @@ Include [the minified js](https://lnsy-dev.github.io/qr-code-element/dist/qr-cod
 ```
 
 The result: 
+
 <qr-code value="qr code element"></qr-code>
 
 Some Caveats: You cannot store a string longer than 1024 characters
