@@ -3,6 +3,7 @@
   
   This just puts the QR code into a bare HTMLElement
   
+  By LNSY
 
 */
 
