@@ -19,10 +19,25 @@
 
   <script src="./index.js" type="module"></script>
   <style>
-
+    #qr_code_result {
+      color: white;
+      text-shadow: 2px 2px 2px black;
+      position: absolute;
+      text-align: center;
+      width: 100%;
+      top: 3em;
+    }
   </style>
 </head>
 <body>
-  <qr-code></qr-code>
+  <qr-code-reader id="qr_code_reader"></qr-code-reader>
+  <h1 id="qr_code_result"></h1>
+
+  <script type="module">
+    qr_code_reader.addEventListener('QR-CODE-FOUND', (e) => {
+      qr_code_result.innerHTML = e.detail.data;
+    });
+  </script>
+
 </body>
 </html>
