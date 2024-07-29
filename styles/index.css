@@ -1,7 +1,16 @@
 qr-code {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  padding: 1em;
   background-color: white;
   color: black;
+}
+
+qr-code a {
+  display: block;
+  width: 100%;
+  text-align: center;
+  padding-top: 4pt;
 }
 
 qr-code img {

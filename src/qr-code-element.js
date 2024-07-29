@@ -624,42 +624,62 @@ var QRCode;
   QRCode.CorrectLevel = QRErrorCorrectLevel;
 })();
 
-
-class QRCodeContainer extends HTMLElement {
+class QRCodeElement extends HTMLElement {
   connectedCallback(){
-
-    const qrtext = this.getAttribute('value')
-    let value = window.location.origin
-    if(qrtext !== null){
-      value = ''
-      value = qrtext
+    this.value = this.getAttribute('value');
+    if(this.value === null){
+      this.value = window.location.origin;
     }
 
-    if(value.length > 1024){
-      this.innerHTML('Value is too long to display')
-      return
+    this.size = this.getAttribute('size');
+    if(this.size === null){
+      this.size = 1024;
     }
 
-    this.qr_code = new QRCode(this, {
-      text: value,
-      width: 1024,
-      height: 1024,
-      colorDark : 'black',
-      colorLight : 'white',
-      correctLevel : QRCode.CorrectLevel.H
-    })
+    const styles = getComputedStyle(this);
+    this.darkColor = styles.getPropertyValue("color");
+    this.lightColor = styles.getPropertyValue("background-color");
 
-    this.qr_link = document.createElement('a')
-    this.qr_link.setAttribute('href', value)
-    this.qr_link.setAttribute('target', '_blank')
-    this.qr_link.innerText = 'link'
+    this.renderQRCode();
 
-    this.appendChild(this.qr_link)
   }
 
+  renderQRCode(){
+    this.innerHTML = ' ';
+    this.qr_Code = new QRCode(this, {
+      text: this.value, 
+      width: this.size,
+      height: this.size,
+      colorDark: this.darkColor,
+      colorLight:this.lightColor,
+      correctLevel: QRCode.CorrectLevel.H
+    });
+
+    this.qr_link = document.createElement('a');
+    this.qr_link.setAttribute('href', this.value);
+    this.qr_link.setAttribute('target', '_blank');
+    this.qr_link.innerText = this.value; 
+    this.appendChild(this.qr_link);    
+  }
+
+  static get observedAttributes() {
+    return ['value'];
+  }
+
+  attributeChangedCallback(name, old_value, new_value){
+    if(old_value === new_value) return
+    switch(name){
+    case "value":
+      this.value = new_value;
+      this.renderQRCode();
+      break
+      default:
+    }
+  }
 }
 
-customElements.define('qr-code', QRCodeContainer)
+customElements.define('qr-code', QRCodeElement);
+
 
 
 

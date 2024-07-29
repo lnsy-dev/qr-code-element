@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>QR Code Label Generator</title>
+  <script src="https://lnsy-dev.github.io/easy-form-component/index.js" type="module"></script>
+  <script src="./src/qr-code-element.js" type="module"></script>
+  <link rel="stylesheet" type="text/css" href="./styles/index.css">
+  <script src="https://lnsy-dev.github.io/easy-form-component/index.js" type="module"></script>
+  <style>
+    main {
+      width: 4in;
+      height: 6in;
+      display: grid; /* Use CSS Grid Layout */
+      grid-template-columns: repeat(2, 1fr); /* 2 columns */
+      grid-template-rows: repeat(3, auto); /* 3 rows, height based on content */
+      gap: 0.2in;
+    }
+
+    qr-code {
+      width: 1.8in;
+      height: 1.8in;
+    }
+
+    qr-code a {
+      text-decoration: none;
+      color: black;
+    }
+
+    @media print {
+      easy-form {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <easy-form id="easy_form">
+    <p>This app is for generating 4" x 6" labels with 6 QR Codes each label</p>
+    <input type="text" name="id" id="uuid_input" placeholder="uuid">
+    <input type="submit">
+  </easy-form>
+  <main id="main_el"></main>
+  <script>  
+    easy_form.addEventListener('submit', function(e){
+      let i = 0;
+
+        const qr_code = document.createElement('qr-code');
+        qr_code.setAttribute('value', `${uuid_input.value}`);
+        main_el.appendChild(qr_code);
+
+    });
+  </script>
+</body>
+</html>

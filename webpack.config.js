@@ -1,7 +1,7 @@
 const path = require('path');
 
 module.exports = {
-  entry: ['./src/index.js','./styles/index.css'],
+  entry: ['./src/qr-code-element.js','./styles/index.css'],
   output: {
     path: path.resolve(__dirname, 'dist'),
     // Bundle name
