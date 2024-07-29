@@ -48,7 +48,6 @@ class QRCodeReader extends HTMLElement {
       this.processing = false;
     })
     .catch(error => {
-      console.log(error || 'No QR code found.');
       this.processing = false;
     });
   }
