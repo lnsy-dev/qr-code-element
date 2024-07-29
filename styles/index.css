@@ -1,9 +1,10 @@
 qr-code {
   display: flex;
   flex-direction: column;
-  padding: 1em;
+  padding: 1em 0em 1.5em 0em;
   background-color: white;
   color: black;
+  overflow: hidden;
 }
 
 qr-code a {
