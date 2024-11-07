@@ -10,10 +10,6 @@ Include [the js](https://lnsy-dev.github.io/qr-code-element/src/qr-code.js) in y
   <qr-code value="cool url link here"></qr-code>
 ```
 
-The result: 
-
-<qr-code value="qr code element"></qr-code>
-
 Some Caveats: You cannot store a string longer than 1024 characters
 
 ## Styling
